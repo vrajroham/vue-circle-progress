@@ -1,15 +1,18 @@
 <template>
   <div>
-    <h1 v-text="msg"></h1>
+    <div :id="id"></div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      msg: 'Hello Vue!'
-    }
+  props : ['id'],
+  mounted(){
+    require('jquery-circle-progress');
+    var $ = require('jquery');
+    $('#circle').circleProgress({
+      value: 0.75
+    });
   }
 }
 </script>

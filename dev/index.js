@@ -1,7 +1,4 @@
 import Vue from 'vue'
-import Component from '../src/index.vue'
+import app from '../src/App.vue'
 
-new Vue({
-  el: '#app',
-  components: { app: Component },
-})
+new Vue(app).$mount('#app');
