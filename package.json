@@ -1,0 +1,35 @@
+{
+  "name": "vue-circle-progress",
+  "description": "A Vue.js component to draw animated circular progress bars",
+  "author": "vaibhavraj roham",
+  "version": "0.1.0",
+  "main": "./dist/vue-circle-progress.js",
+  "scripts": {
+    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
+    "build:demo": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js"
+  },
+  "dependencies": {
+    "vue": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-plugin-transform-runtime": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "cross-env": "^1.0.6",
+    "css-loader": "^0.23.0",
+    "style-loader": "^0.13.1",
+    "file-loader": "^0.8.4",
+    "json-loader": "^0.5.4",
+    "url-loader": "^0.5.7",
+    "vue-hot-reload-api": "^1.2.0",
+    "vue-html-loader": "^1.0.0",
+    "vue-loader": "^8.2.1",
+    "vue-style-loader": "^1.0.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.0"
+  }
+}
