@@ -2,13 +2,17 @@
 
 > A Vue.js component to draw animated circular progress bars
 
+Draw animated circle like below
+
+![](http://i.imgur.com/zV5VUQG.png)
+
 **[LIVE DEMO]()**
 
 ---
 ## Install
 ````
 // For Vue.js 2.0+
-npm install vue-circle-progress
+npm install vue2-circle-progress
 ````
 ## Usage
 1. Import the module
@@ -43,7 +47,7 @@ npm install vue-circle-progress
 </template>
 
 <script>
-  import VueCircle from '../src/index.vue'
+  import VueCircle from 'vue2-circle-progress'
   export default {
     components: {
       VueCircle
