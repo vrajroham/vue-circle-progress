@@ -108,4 +108,4 @@ npm run dev
 npm run build
 ```
 ## Thanks
-This is a Vue2 wrapper around [this library](https://github.com/kottenator/jquery-circle-progress) Thanks to **Rostyslav Bryzgunov**. 
+This is a Vue2 component built with wrapper around [this library](https://github.com/kottenator/jquery-circle-progress) Thanks to **Rostyslav Bryzgunov**. 
