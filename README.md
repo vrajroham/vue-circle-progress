@@ -2,11 +2,9 @@
 
 > A Vue.js component to draw animated circular progress bars
 
-Draw animated circle like below
+Draw animated progress circle like below,
 
 ![](http://i.imgur.com/zV5VUQG.png)
-
-**[LIVE DEMO]()**
 
 ---
 ## Install
