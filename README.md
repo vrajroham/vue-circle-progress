@@ -97,6 +97,27 @@ Events emitted by the component to the parent.
 |vue-circle-end(event)|This event is emitted after completing progress|
 ------------------
 
+## Methods
+Methods you can call on the component.
+
+| Method | Description |
+|------------|-------------|
+| updateProgress(value) | It will update component progress value and animate the change. **It doesn't redraw the widget.** |
+
+## Using Methods
+Methods can be called from your parent component by making use of the <a href="https://vuejs.org/v2/api/#ref">special tag "ref"</a>.
+
+When you initialize the component add a unique ID to the component using the ref tag, like this
+
+```html
+<vue-circle ref="myUniqueID"></vue-circle>
+```
+Then from your parent Vue instance, you can call the methods by using the following:
+
+```javascript
+this.$refs.myUniqueID.updateProgress(21)
+```
+
 ## Development
 If you feel you can make this better, you are welcome to contribute. I'd love to see your ideas.
 ``` bash
@@ -110,4 +131,4 @@ npm run dev
 npm run build
 ```
 ## Thanks
-This is a Vue2 component built with wrapper around [this library](https://github.com/kottenator/jquery-circle-progress) Thanks to **Rostyslav Bryzgunov**. 
+This is a Vue2 component built with wrapper around [this library](https://github.com/kottenator/jquery-circle-progress) Thanks to **Rostyslav Bryzgunov**.

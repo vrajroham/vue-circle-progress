@@ -4,8 +4,9 @@
       A Vue.js component to draw animated circular progress bars!
     </p>
       <vue-circle
+        ref="myprogress"
         id="circle"
-        :progress="50"
+        :progress="p"
         :size="100"
         :reverse="false"
         line-cap="round"
@@ -15,12 +16,12 @@
         :start-angle="0"
         insert-mode="append"
         :thickness="5"
-        inner-text="Hi...."
         :show-percent="true"
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end"
         >
       </vue-circle>
+      <button @click="redraw">Redraw</button>
   </div>
 </template>
 
@@ -33,6 +34,7 @@
     data(){
       return{
         fill : { gradient: ["red", "green", "blue"] },
+        p:10
       }
     },
     methods:{
@@ -41,6 +43,9 @@
       },
       progress_end(event){
         console.log("Circle progress end");
+      },
+      redraw(){
+        this.$refs.myprogress.updateProgress(60);
       }
     }
   }

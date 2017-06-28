@@ -7,6 +7,7 @@
 </template>
 
 <script>
+ var $ = require('jquery');
 export default {
   props : {
     id: {
@@ -61,7 +62,6 @@ export default {
   },
   mounted(){
     require('jquery-circle-progress');
-    var $ = require('jquery');
     let that = this;
     var el = $('#' + that.id).circleProgress({
       value : this.convertedProgress(that.progress),
@@ -87,8 +87,15 @@ export default {
     });
   },
   methods:{
-    convertedProgress : function(progress) {
+    convertedProgress(progress) {
       return progress/100;
+    },
+    updateProgress(value){
+      if ($.type(value) === "number") {
+        $('#' + this.id).circleProgress('value',this.convertedProgress(value));
+      }else{
+        console.error("Passed Invalid Value. Number Expected. (Hint: use parseInt())")
+      }
     }
   }
 }
