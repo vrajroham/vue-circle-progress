@@ -7,7 +7,7 @@
         ref="myprogress"
         id="circle"
         :progress="p"
-        :size="100"
+        :size="200"
         :reverse="false"
         line-cap="round"
         :fill="fill"
@@ -21,6 +21,7 @@
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end"
         >
+          <p style="margin-top:0;font-size:20px;">Circle!</p>
       </vue-circle>
       <button @click="redraw">Redraw</button>
   </div>

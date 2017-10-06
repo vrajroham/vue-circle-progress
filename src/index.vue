@@ -1,14 +1,17 @@
 <template>
   <div>
     <div :id="id" class="circle">
-      <span id="percent-text"></span>
+      <div class="circle-percent-text-body">
+        <span class="percent-text" :style="{ 'font-size': percentFontSize }"></span>
+        <slot></slot>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
- var $ = require('jquery');
- require('jquery-easing')($);
+var $ = require('jquery');
+require('jquery-easing')($);
 export default {
   props : {
     id: {
@@ -30,6 +33,13 @@ export default {
     },
     thickness: {
         type: Number,
+    },
+    percentFontSize: {
+      type: String,
+      required: false,
+      default: function(){
+        return (this.size / 4).toString() + "px";
+      } 
     },
     animation: {
         required: false,
@@ -66,9 +76,6 @@ export default {
       type : Boolean,
       default : true
     },
-    innerText:{
-      type : String
-    },
   },
   mounted(){
     require('jquery-circle-progress');
@@ -101,10 +108,8 @@ export default {
 
     function renderCircleBody(self, value){
       value = !!value ? value : that.progress;
-      if ((!that.innerText) && that.showPercent)
-        $(self).find('span').html(Math.floor(value*100)+"%");
-      else {
-        $(self).find('span').html(that.innerText);
+      if (that.showPercent){
+        $(self).find('span.percent-text').html(Math.floor(value*100)+"%");
       }
     }
   },
@@ -128,16 +133,18 @@ export default {
   position: relative;
   display: inline-block;
 }
-
-span{
+.circle-percent-text-body {
   position: absolute;
- left: 50%;
- top: 50%;
- width: 100px;
- height: 40px;
- margin-left: -50px;
- margin-top: -15px;
- text-align: center;
- font-size-adjust: auto;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.percent-text {
+  font-weight: bold;
 }
 </style>
