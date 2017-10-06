@@ -8,6 +8,7 @@
 
 <script>
  var $ = require('jquery');
+ require('jquery-easing')($);
 export default {
   props : {
     id: {
