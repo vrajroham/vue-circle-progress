@@ -80,6 +80,7 @@ Follwing `props` are used while initialization
 | line-cap | String | Arc line cap: "butt", "round" or "square" <br> `Default: "butt"` |
 | fill | Object | The arc fill config. You may specify next:  <br>- `"#ff1e41"` <br>- `{ color: "#ff1e41" }` <br>- `{ color: 'rgba(255, 255, 255, .3)' }` <br>- `{ gradient: ["red", "green", "blue"] }` <br>- `{ gradient: [["red", .2], ["green", .3], ["blue", .8]] }` <br>- `{ gradient: [ ... ], gradientAngle: Math.PI / 4 }` <br>- `{ gradient: [ ... ], gradientDirection: [x0, y0, x1, y1] }` <br>- `{ image: "http://i.imgur.com/pT0i89v.png" }`<br>- `{ image: imageInstance }`<br>- `{ color: "lime", image: "http://i.imgur.com/pT0i89v.png" }` <br> Default: `{ gradient: ["#3aeabb", "#fdd250"] }` |
 | empty-fill | String | Color of the "empty" arc. Only a color fill supported by now <br> Default: `"rgba(0, 0, 0, .1)"` |
+| animation  | Mixed | Animation config. See [jQuery animations](http://api.jquery.com/animate/). <br> You may also set it to `false` <br> Default: `{ duration: 1200, easing: "circleProgressEasing" }`  <br> `"circleProgressEasing"` *is just a ease-in-out-cubic easing* |
 | animation-start-value | Number | Default animation starts at `0.0` and ends at specified `value`. Let's call this direct animation. If you want to make reversed animation then you should set `animationStartValue` to `1.0`. Also you may specify any other value from `0.0` to `1.0` <br> Default: `0.0` |
 | start-angle | Number | Initial angle (for `0` value) <br> Default: `-Math.PI` |
 | insert-mode | String | Canvas insertion mode: append or prepend it into the parent element <br> Default: `"prepend"` |
@@ -93,6 +94,7 @@ Events emitted by the component to the parent.
 
 |Event Name|Description|
 |----------|-----------|
+|vue-circle-init(event)| This event is emmited after the circle is initialized |
 |vue-circle-progress(event,progress,stepValue)|This event is emitted on every progress step|
 |vue-circle-end(event)|This event is emitted after completing progress|
 ------------------
