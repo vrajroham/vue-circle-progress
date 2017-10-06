@@ -15,6 +15,7 @@
         :animation-start-value="0.0"
         :start-angle="0"
         insert-mode="append"
+        :animation="{ duration: 1200, easing: 'easeOutBounce' }"
         :thickness="5"
         :show-percent="true"
         @vue-circle-progress="progress"
