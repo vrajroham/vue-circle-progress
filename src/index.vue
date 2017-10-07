@@ -8,6 +8,7 @@
 
 <script>
  var $ = require('jquery');
+ require('jquery-easing')($);
 export default {
   props : {
     id: {
@@ -29,6 +30,15 @@ export default {
     },
     thickness: {
         type: Number,
+    },
+    animation: {
+        required: false,
+        default: function(){
+          return { duration: 1200, easing: "circleProgressEasing" };
+        },
+        validator: function(value){
+          return (value instanceof Object || value === false);
+        }
     },
     animationStartValue: {
         type: Number,
@@ -63,7 +73,12 @@ export default {
   mounted(){
     require('jquery-circle-progress');
     let that = this;
-    var el = $('#' + that.id).circleProgress({
+    let el = $('#' + that.id)
+    .on('circle-inited', function(event){
+      renderCircleBody(this, (that.progress/100));
+      that.$emit('vue-circle-init', event);
+    })
+    .circleProgress({
       value : this.convertedProgress(that.progress),
       size : that.size,
       startAngle:that.startAngle,
@@ -71,20 +86,27 @@ export default {
       lineCap: that.lineCap,
       fill: that.fill,
       emptyFill : that.emptyFill,
+      animation: that.animation,
       animationStartValue:that.animationStartValue,
       insertMode:that.insertMode,
       thickness : that.thickness
-    }).on('circle-animation-progress', function(event,progress,stepValue) {
-      if ((!that.innerText) && that.showPercent)
-        $(this).find('span').html(Math.floor(stepValue*100)+"%");
-      else {
-        $(this).find('span').html(that.innerText);
-      }
+    })
+    .on('circle-animation-progress', function(event,progress,stepValue) {
+      renderCircleBody(this, stepValue);
       that.$emit('vue-circle-progress', event,progress,stepValue*100);
     })
     .on('circle-animation-end', function(event) {
       that.$emit('vue-circle-end', event);
     });
+
+    function renderCircleBody(self, value){
+      value = !!value ? value : that.progress;
+      if ((!that.innerText) && that.showPercent)
+        $(self).find('span').html(Math.floor(value*100)+"%");
+      else {
+        $(self).find('span').html(that.innerText);
+      }
+    }
   },
   methods:{
     convertedProgress(progress) {
