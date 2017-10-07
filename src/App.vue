@@ -21,7 +21,7 @@
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end"
         >
-          <p style="margin-top:0;font-size:20px;">Circle!</p>
+        <p style="margin-top:0;font-size:12px;">Slot!</p>
       </vue-circle>
       <button @click="redraw">Redraw</button>
   </div>
