@@ -92,7 +92,7 @@ export default {
       lineCap: that.lineCap,
       fill: that.fill,
       emptyFill : that.emptyFill,
-      //animation: that.animation,
+      animation: that.animation,
       animationStartValue:that.animationStartValue,
       insertMode:that.insertMode,
       thickness : that.thickness
