@@ -5,14 +5,14 @@
   "version": "1.1.0",
   "main": "./dist/vue-circle-progress.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
+    "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080 --host 0.0.0.0 --public centos-dev.adams.corp:8080",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/prod.js && npm run build:demo",
     "build:demo": "cross-env NODE_ENV=production webpack --progress --hide-modules --config ./build/dev.js",
     "prepare": "npm run build"
   },
   "dependencies": {
     "jquery-circle-progress": "^1.2.2",
-    "jquery-easing": "0.0.1",
+    "jquery.easing": "1.4.1",
     "vue": "^2.0.0"
   },
   "devDependencies": {
