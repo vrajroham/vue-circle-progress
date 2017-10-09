@@ -10,8 +10,7 @@
 </template>
 
 <script>
-var $ = require('jquery');
-require('jquery.easing')($);
+var $ = require('jquery-easing');
 export default {
   props : {
     id: {
@@ -93,7 +92,7 @@ export default {
       lineCap: that.lineCap,
       fill: that.fill,
       emptyFill : that.emptyFill,
-      animation: that.animation,
+      //animation: that.animation,
       animationStartValue:that.animationStartValue,
       insertMode:that.insertMode,
       thickness : that.thickness
