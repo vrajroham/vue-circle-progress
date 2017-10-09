@@ -10,8 +10,7 @@
 </template>
 
 <script>
-var $ = require('jquery');
-require('jquery-easing')($);
+var $ = require('jquery-easing');
 export default {
   props : {
     id: {
