@@ -1,10 +1,8 @@
 <template>
-  <div>
-    <div :id="id" class="circle">
-      <div class="circle-percent-text-body">
-        <span class="percent-text" :style="{ 'font-size': percentFontSize }"></span>
-        <slot></slot>
-      </div>
+  <div class="circle">
+    <div class="circle-percent-text-body">
+      <span class="percent-text" :style="{ 'font-size': percentFontSize }"></span>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -13,10 +11,6 @@
 var $ = require('jquery-easing');
 export default {
   props : {
-    id: {
-        type: String,
-        required: true
-    },
     progress: {
         type: Number,
         required: true,
@@ -78,36 +72,36 @@ export default {
   },
   mounted(){
     require('jquery-circle-progress');
-    let that = this;
-    let el = $('#' + that.id)
+    let vm = this;
+    $(vm.$el)
     .on('circle-inited', function(event){
-      renderCircleBody(this, (that.progress/100));
-      that.$emit('vue-circle-init', event);
+      renderCircleBody(this, (vm.progress/100));
+      vm.$emit('vue-circle-init', event);
     })
     .circleProgress({
-      value : this.convertedProgress(that.progress),
-      size : that.size,
-      startAngle:that.startAngle,
-      reverse : that.reverse,
-      lineCap: that.lineCap,
-      fill: that.fill,
-      emptyFill : that.emptyFill,
-      animation: that.animation,
-      animationStartValue:that.animationStartValue,
-      insertMode:that.insertMode,
-      thickness : that.thickness
+      value: this.convertedProgress(vm.progress),
+      size: vm.size,
+      startAngle:vm.startAngle,
+      reverse: vm.reverse,
+      lineCap: vm.lineCap,
+      fill: vm.fill,
+      emptyFill: vm.emptyFill,
+      animation: vm.animation,
+      animationStartValue: vm.animationStartValue,
+      insertMode: vm.insertMode,
+      thickness : vm.thickness
     })
     .on('circle-animation-progress', function(event,progress,stepValue) {
       renderCircleBody(this, stepValue);
-      that.$emit('vue-circle-progress', event,progress,stepValue*100);
+      vm.$emit('vue-circle-progress', event,progress,stepValue*100);
     })
     .on('circle-animation-end', function(event) {
-      that.$emit('vue-circle-end', event);
+      vm.$emit('vue-circle-end', event);
     });
 
     function renderCircleBody(self, value){
-      value = !!value ? value : that.progress;
-      if (that.showPercent){
+      value = !!value ? value : vm.progress;
+      if (vm.showPercent){
         $(self).find('span.percent-text').html(Math.floor(value*100)+"%");
       }
     }
@@ -118,7 +112,7 @@ export default {
     },
     updateProgress(value){
       if ($.type(value) === "number") {
-        $('#' + this.id).circleProgress('value',this.convertedProgress(value));
+        $(this.$el).circleProgress('value',this.convertedProgress(value));
       }else{
         console.error("Passed Invalid Value. Number Expected. (Hint: use parseInt())")
       }
@@ -136,8 +130,6 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
