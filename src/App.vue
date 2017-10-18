@@ -5,7 +5,6 @@
     </p>
       <vue-circle
         ref="myprogress"
-        id="circle"
         :progress="p"
         :size="100"
         :reverse="false"
@@ -42,6 +41,9 @@
     methods:{
       progress(event,progress,stepValue){
         console.log(stepValue);
+        if (stepValue > 30) {
+          this.$refs.myprogress.updateFill({color: '#e3f218'});
+        }
       },
       progress_end(event){
         console.log("Circle progress end");
