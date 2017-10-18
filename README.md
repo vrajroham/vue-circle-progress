@@ -25,7 +25,6 @@ npm install vue2-circle-progress
       A Vue.js component to draw animated circular progress bars!
     </p>
       <vue-circle
-        id="circle"
         :progress="50"
         :size="100"
         :reverse="false"
@@ -36,10 +35,10 @@ npm install vue2-circle-progress
         :start-angle="0"
         insert-mode="append"
         :thickness="5"
-        inner-text="Hi...."
         :show-percent="true"
         @vue-circle-progress="progress"
         @vue-circle-end="progress_end">
+          <p>Slot!</p>
       </vue-circle>
   </div>
 </template>
@@ -105,6 +104,7 @@ Methods you can call on the component.
 | Method | Description |
 |------------|-------------|
 | updateProgress(value) | It will update component progress value and animate the change. **It doesn't redraw the widget.** |
+| updateFill(fill) | It will update component fill color. |
 
 ## Using Methods
 Methods can be called from your parent component by making use of the <a href="https://vuejs.org/v2/api/#ref">special tag "ref"</a>.
@@ -117,7 +117,8 @@ When you initialize the component add a unique ID to the component using the ref
 Then from your parent Vue instance, you can call the methods by using the following:
 
 ```javascript
-this.$refs.myUniqueID.updateProgress(21)
+this.$refs.myUniqueID.updateProgress(21);
+this.$refs.myUniqueID.updateFill("#ff1e41");
 ```
 
 ## Development
