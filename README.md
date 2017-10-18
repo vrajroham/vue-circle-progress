@@ -83,7 +83,6 @@ Follwing `props` are used while initialization
 | start-angle | Number | Initial angle (for `0` value) <br> Default: `-Math.PI` |
 | insert-mode | String | Canvas insertion mode: append or prepend it into the parent element <br> Default: `"prepend"` |
 | thickness | Number | Width of the arc. By default it's automatically calculated as 1/14 of `size` but you may set your own number <br> Default: `"auto"` |
-| inner-text | String | Text you want to insert inside circle `(keep small according to circle size)` |
 | show-percent | Boolean | Show loaded percentage inside circle. If `inner-text` property is set then percentage will not be shown. <br> Default : `true`|
 ---
 
