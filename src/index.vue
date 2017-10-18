@@ -117,9 +117,9 @@ export default {
         console.error("Passed Invalid Value. Number Expected. (Hint: use parseInt())")
       }
     },
-    changeColor: function(colorPayload){
+    updateFill: function(fill){
       let circle = $(this.$el).data('circle-progress');
-      circle.fill = colorPayload;
+      circle.fill = fill;
       circle.initFill();
     },
   },
