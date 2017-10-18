@@ -117,6 +117,9 @@ export default {
         console.error("Passed Invalid Value. Number Expected. (Hint: use parseInt())")
       }
     }
+  },
+  beforeDestroy: function(){
+    $(this.$el).remove();
   }
 }
 </script>
