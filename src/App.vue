@@ -42,7 +42,7 @@
       progress(event,progress,stepValue){
         console.log(stepValue);
         if (stepValue > 30) {
-          this.$refs.myprogress.updateFill({color: '#e3f218'});
+          this.$refs.myprogress.updateFill('#e3f218');
         }
       },
       progress_end(event){
