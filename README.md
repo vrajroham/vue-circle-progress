@@ -69,11 +69,10 @@ npm install vue2-circle-progress
 
 ## Props
 Follwing `props` are used while initialization
-> Note : Only `id` and `progress` are required props. Others are optional
+> Note : Only `progress` is a required prop. Others are optional
 
 | Prop Name | Type | Description |
 |----------|------|--------------|
-| id `(required)` | String | A string by which to identify the component, can be anything.|
 | progress `(required)`| Number | Total progress of circle (filled area) |
 | size | Number | Size of circle<br>Default : `200` |
 | reverse | Boolean | Reverse animation and arc draw <br>Default:`false`|
