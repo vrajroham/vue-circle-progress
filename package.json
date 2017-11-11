@@ -2,7 +2,7 @@
   "name": "vue2-circle-progress",
   "description": "A Vue.js component to draw animated circular progress bars",
   "author": "vaibhavraj roham",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "./dist/vue-circle-progress.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --config ./build/dev.js --port 8080",
