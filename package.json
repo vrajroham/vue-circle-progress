@@ -5,7 +5,7 @@
   "version": "1.2.2",
   "main": "./dist/vue-circle-progress.js",
   "repsitory": {
-    "type: "git",
+    "type": "git",
     "url": "https://github.com/vrajroham/vue-circle-progress"
   },
   "scripts": {
