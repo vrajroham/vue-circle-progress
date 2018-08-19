@@ -1,7 +1,7 @@
 <template>
   <div class="circle">
-    <div class="circle-percent-text-body">
-      <span class="percent-text" :style="{ 'font-size': percentFontSize }"></span>
+    <div class="circle-text-body">
+      <span class="legend-text" :class="legendClass"></span>
       <slot></slot>
     </div>
   </div>
@@ -16,6 +16,16 @@ export default {
         required: true,
         default : 0.25
     },
+    scale: {
+      type: Number,
+      required: false,
+      default: 100
+    },
+    precision: {
+      type: Number,
+      required: false,
+      default: 0
+    },
     size: {
         type: Number,
         required: false,
@@ -27,12 +37,9 @@ export default {
     thickness: {
         type: Number,
     },
-    percentFontSize: {
+    legendClass: {
       type: String,
-      required: false,
-      default: function(){
-        return (this.size / 4).toString() + "px";
-      }
+      required: true
     },
     animation: {
         required: false,
@@ -69,13 +76,17 @@ export default {
       type : Boolean,
       default : true
     },
+    showLegend:{
+      type : Boolean,
+      default : true
+    },
   },
   mounted(){
     require('jquery-circle-progress');
     let vm = this;
     $(vm.$el)
     .on('circle-inited', function(event){
-      renderCircleBody(this, (vm.progress/100));
+      renderCircleBody(this, (vm.progress/vm.scale));
       vm.$emit('vue-circle-init', event);
     })
     .circleProgress({
@@ -101,14 +112,17 @@ export default {
 
     function renderCircleBody(self, value){
       value = !!value ? value : vm.progress;
-      if (vm.showPercent){
-        $(self).find('span.percent-text').html(Math.floor(value*100)+"%");
+      if (!vm.showLegend){ return }
+      else if (vm.showLegend && vm.showPercent) {
+        $(self).find('span.legend-text').html(Math.floor(value*vm.scale)+"%");
+      } else if (vm.showLegend && !vm.showPercent) {
+        $(self).find('span.legend-text').html((value*vm.scale).toFixed(vm.precision));
       }
     }
   },
   methods:{
     convertedProgress(progress) {
-      return progress/100;
+      return progress/this.scale;
     },
     updateProgress(value){
       if ($.type(value) === "number") {
@@ -134,7 +148,7 @@ export default {
   position: relative;
   display: inline-block;
 }
-.circle-percent-text-body {
+.circle-text-body {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -142,8 +156,5 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.percent-text {
-  font-weight: bold;
 }
 </style>
