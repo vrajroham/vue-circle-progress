@@ -88,6 +88,12 @@ export default {
     .on('circle-inited', function(event){
       renderCircleBody(this, (vm.progress/vm.scale));
       vm.$emit('vue-circle-init', event);
+      vm.$watch('progress', (nv) => {
+        vm.updateProgress(nv)
+      })
+      vm.$watch('fill', (nv) => {
+        vm.updateFill(nv)
+      })
     })
     .circleProgress({
       value: this.convertedProgress(vm.progress),
