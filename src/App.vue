@@ -23,6 +23,31 @@
         <p style="margin-top:0;font-size:12px;">Slot!</p>
       </vue-circle>
       <button @click="redraw">Redraw</button>
+
+    <p>
+      Negative Percentage Example!
+    </p>
+      <vue-circle
+        ref="myprogressNegative"
+        :progress="p"
+        :size="100"
+        :reverse="true"
+        line-cap="round"
+        :fill="fill"
+        empty-fill="rgba(0, 0, 0, .1)"
+        :animation-start-value="0.0"
+        :start-angle="0"
+        insert-mode="append"
+        :animation="{ duration: 1200, easing: 'easeOutBounce' }"
+        :thickness="5"
+        :show-percent="true"
+        :show-negative-percent="true"
+        @vue-circle-progress="progress"
+        @vue-circle-end="progress_end"
+        >
+        <p style="margin-top:0;font-size:12px;">Slot!</p>
+      </vue-circle>
+      <button @click="redrawNegative">Redraw</button>
   </div>
 </template>
 
@@ -50,6 +75,9 @@
       },
       redraw(){
         this.$refs.myprogress.updateProgress(60);
+      },
+      redrawNegative(){
+        this.$refs.myprogressNegative.updateProgress(60);
       }
     }
   }

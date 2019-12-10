@@ -79,6 +79,10 @@ export default {
     showLegend:{
       type : Boolean,
       default : true
+    },    
+    showNegativePercent:{
+      type : Boolean,
+      default : false
     },
   },
   mounted(){
@@ -113,7 +117,9 @@ export default {
     function renderCircleBody(self, value){
       value = !!value ? value : vm.progress;
       if (!vm.showLegend){ return }
-      else if (vm.showLegend && vm.showPercent) {
+      else if (vm.showLegend && vm.showPercent && vm.showNegativePercent) {
+        $(self).find('span.legend-text').html("-"+Math.floor(value*vm.scale)+"%");
+      } else if (vm.showLegend && vm.showPercent) {
         $(self).find('span.legend-text').html(Math.floor(value*vm.scale)+"%");
       } else if (vm.showLegend && !vm.showPercent) {
         $(self).find('span.legend-text').html((value*vm.scale).toFixed(vm.precision));
