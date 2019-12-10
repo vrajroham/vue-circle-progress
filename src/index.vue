@@ -8,7 +8,7 @@
 </template>
 
 <script>
-var $ = require('jquery-easing');
+const $ = typeof window !== 'undefined' ?  require('jquery-easing') : null;
 export default {
   props : {
     progress: {
